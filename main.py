@@ -1,10 +1,13 @@
 import random
 import words
 
+
+    
+
 words= words.words()
 wordCollection= list(words.split())
 randomNumber= random.randint(0, len(wordCollection)-1)
-chosenWord= wordCollection[randomNumber]
+chosenWord= wordCollection[randomNumber].lower()
 unknownWord=""
 
 print(chosenWord)
@@ -12,17 +15,27 @@ print(chosenWord)
 for letter in range(len(chosenWord)):
   unknownWord+= "*"
 
-print(unknownWord)
+gameState = True
+while gameState == True:
 
+  guessedLetter= input("Enter Your Guess: ")
+  if guessedLetter in chosenWord:
+    guessedIndex = chosenWord.index(guessedLetter)
+    unknownLst= list(unknownWord)
+    unknownLst[guessedIndex] = chosenWord[guessedIndex]
+    unknownWord = "".join(unknownLst)
+    unknownWord = unknownWord
 
-guessedLetter= input("Enter Your Guess: ")
-if guessedLetter in chosenWord:
-     guessedIndex = chosenWord.index(guessedLetter)
-     unknownLst= list(unknownWord)
-     unknownLst[guessedIndex] = chosenWord[guessedIndex]
-     updatedUnkown= "".join(unknownLst)
-     print(updatedUnkown)
-     print("Correct guess!")
-else:
-  print("Wrong Guess!")
-    
+    print(unknownWord)
+    print("Correct guess!")
+
+    if '*' in unknownWord:
+       gameState= True
+    else:
+      gameState= False
+      print("")
+      print("You Won!")
+  else:
+    print("Wrong Guess!")
+    print(unknownWord)
+
