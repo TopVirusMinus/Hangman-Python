@@ -20,21 +20,23 @@ while gameState == True:
 
   guessedLetter= input("Enter Your Guess: ")
   if guessedLetter in chosenWord:
-    guessedIndex = chosenWord.index(guessedLetter)
-    unknownLst= list(unknownWord)
-    unknownLst[guessedIndex] = chosenWord[guessedIndex]
-    unknownWord = "".join(unknownLst)
-    unknownWord = unknownWord
+      for i in range(len(chosenWord)):
+        if chosenWord[i] == guessedLetter:
+          guessedIndex = chosenWord.index(guessedLetter)
+          unknownLst= list(unknownWord)
+          unknownLst[i] = chosenWord[i]
+          unknownWord = "".join(unknownLst)
+          unknownWord = unknownWord
 
-    print(unknownWord)
-    print("Correct guess!")
+      print(unknownWord)
+      print("Correct guess!")
 
-    if '*' in unknownWord:
-       gameState= True
-    else:
-      gameState= False
-      print("")
-      print("You Won!")
+      if '*' in unknownWord:
+        gameState= True
+      else:
+        gameState= False
+        print("")
+        print("You Won!")
   else:
     print("Wrong Guess!")
     print(unknownWord)
