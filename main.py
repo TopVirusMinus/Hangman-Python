@@ -1,6 +1,18 @@
-words= ["Cat", "Dog", "Elephant", "Giraffe"]
-guess=""
-for i in words:
-  guess+= "*"
+import random
+import words
 
-print(guess)
+words= words.words()
+wordCollection= list(words.split())
+
+randomNumber= random.randint(0, len(wordCollection)-1)
+chosenWord= wordCollection[randomNumber]
+
+guessedLetter=""
+
+print(chosenWord)
+
+
+for letter in range(len(chosenWord)):
+  guessedLetter+= "*"
+
+print(guessedLetter)
