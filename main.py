@@ -10,11 +10,11 @@ randomNumber= random.randint(0, len(wordCollection)-1)
 chosenWord= wordCollection[randomNumber].lower()
 unknownWord=""
 health = 10
-print(chosenWord)
+
 
 for letter in range(len(chosenWord)):
   unknownWord+= "*"
-
+print(unknownWord)
 gameState = True
 while gameState == True:
 
@@ -39,8 +39,9 @@ while gameState == True:
         gameState= True
       else:
         gameState= False
-        print("")
-        print("You Won!")
+        mistakes= 10 - health
+        print("You Won! , You Made: ", mistakes, "Mistakes!" )
+
   else:
     
     print("Wrong Guess!")
@@ -53,4 +54,5 @@ while gameState == True:
   if health == 0:
     print("You Lost")
     print("You Used All Your Health...")
+    print("Word Was: ",chosenWord)
     gameState = False
